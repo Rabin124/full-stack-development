@@ -1,31 +1,34 @@
 const express = require("express");
+const { books } = require("./database/connection");
 const app = express();
 require("./database/connection")
+app.use(express.json()) // for parsing application/json
 
-// let app = require("express")()
 
-// app.get("/",(req,res)=>{
-//   res.json({
-//     "name":"rabin",
-//     "address":"bnp"
-//   })
-// })
-// app.get("/about",(req,res)=>{
-//   res.send("About world")
-// })
-// app.post("/aboutpost",(req,res)=>{
-//   res.send("About world")
-// })
 
-app.get("/books",function(req,res){
-  users.findAll()
+app.get("/books",async function(req,res){
+  // users.findAll()
+  // logic to fetch books from database
+  const datas = await books.findAll()//SELECT * FROM books
   res.json({
-    // logic to fetch books from database
-    message : "books fetched successfully"
+    message : "books fetched successfully",
+    datas
   })
 })
 
-app.post("/books",function(req,res){
+app.post("/books",async function(req,res){
+  console.log(req.body)
+  // const bookName = req.body.bookName
+  // const bookPrice = req.body.bookPrice
+  const { bookName, bookPrice,bookAuthor, bookGenre } = req.body
+  await books.create({
+    bookName: bookName,
+    bookPrice: bookPrice,
+    bookAuthor: bookAuthor,
+    bookGenre: bookGenre
+  })
+  console.log(bookName)
+  console.log(bookPrice)
   res.json({
     message: "Book added successfully"
   })
