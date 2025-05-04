@@ -28,19 +28,47 @@ exports.addBook= async function(req,res){
   })
 }
 
-exports.deleteBook = function(req,res){
+exports.deleteBook = async function(req,res){
+  // first ma hami, kun book delete garna aatekoho tesko id lie
+  const id = req.params.id 
+  // id payisakepaxi, hami tesko id ko book lai delete garna parcha
+ await books.destroy({
+    where :{
+      id
+    }
+  })//delete from books where id = id
   res.json({
     message : "Book deleted successfully"
   })
 }
 
-exports.editBook = function(req,res){
+exports.editBook =async function(req,res){
+  try {
+    //kun id ko chai edit garne tyo id chai hami le pathaune parcha
+  const id = req.params.id
+  // kk update grne ta
+  const { bookName, bookPrice,bookAuthor, bookGenre } = req.body
+
+ await books.update({
+    bookName,
+    bookPrice,
+    bookAuthor,
+    bookGenre
+  },{
+    where:{
+      id:id
+    }
+  })//update books set bookName = bookName, bookPrice = bookPrice where id = id
   res.json({
     message : "Book updated successfully"
   })
 }
 
-
+   catch(error) {
+    res.json({
+      message : "Error in updating book", })    
+  }
+}
 exports.singleFetchBook =async function(req,res){
   // first capture what id is he sending 
   const id= req.params.id
