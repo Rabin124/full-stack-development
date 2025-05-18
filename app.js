@@ -1,9 +1,12 @@
 const express = require("express");
 const bookRoute = require("./routes/bookRoute")
 const app = express();
+const cors = require("cors")
 require("./database/connection")
 app.use(express.json()) // for parsing application/json
-
+app.use(cors({
+  origin: "http://localhost:5173"
+})) // Enable CORS for all routes
 app.use("/api/",bookRoute)
 
 
