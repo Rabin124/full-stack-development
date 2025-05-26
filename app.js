@@ -5,7 +5,7 @@ const cors = require("cors")
 require("./database/connection")
 app.use(express.json()) // for parsing application/json
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: "https://frontendforbackend.vercel.app/"
 })) // Enable CORS for all routes
 app.use("/api/",bookRoute)
 
