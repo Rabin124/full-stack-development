@@ -20,7 +20,7 @@ sequelize.authenticate()
   db.books = bookModel(sequelize, DataTypes)
 
   // migrate code ho yo chai hai
-  sequelize.sync({force: false, alter:false}).then(()=>{
+  sequelize.sync({force: true, alter:false}).then(()=>{
     console.log("yes migrate done")
   })
   module.exports = db
