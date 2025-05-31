@@ -20,7 +20,6 @@ exports.addBook= async function(req,res){
     bookPrice: bookPrice,
     bookAuthor: bookAuthor,
     bookGenre: bookGenre,
-    // bookImage: bookImage
   })
   console.log(bookName)
   console.log(bookPrice)
@@ -48,14 +47,13 @@ exports.editBook =async function(req,res){
     //kun id ko chai edit garne tyo id chai hami le pathaune parcha
   const id = req.params.id
   // kk update grne ta
-  const { bookName, bookPrice,bookAuthor, bookGenre , bookImage } = req.body
+  const { bookName, bookPrice,bookAuthor, bookGenre } = req.body
 
  await books.update({
     bookName,
     bookPrice,
     bookAuthor,
     bookGenre,
-    // bookImage
   },{
     where:{
       id:id
