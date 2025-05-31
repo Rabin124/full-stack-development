@@ -20,7 +20,7 @@ exports.addBook= async function(req,res){
     bookPrice: bookPrice,
     bookAuthor: bookAuthor,
     bookGenre: bookGenre,
-    bookImage: bookImage
+    // bookImage: bookImage
   })
   console.log(bookName)
   console.log(bookPrice)
@@ -55,7 +55,7 @@ exports.editBook =async function(req,res){
     bookPrice,
     bookAuthor,
     bookGenre,
-    bookImage
+    // bookImage
   },{
     where:{
       id:id
@@ -86,4 +86,4 @@ exports.singleFetchBook =async function(req,res){
     // datass
   })
 }
-// module.exports = {fetchBooks,addBook,deleteBook,editBook}
+// module.exports = {fetchBooks,addBook,deleteBook,editBook,singleFetchBook}

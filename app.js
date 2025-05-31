@@ -11,13 +11,13 @@ app.use(cors({
   origin: "*"
 })) // Enable CORS for all routes
 app.use("/api/",bookRoute)
-app.post("/api/upload", upload.single("bookImage"), function (req, res) {
-  // console.log(req.file)
-  res.json({
-    message: "File uploaded successfully",
-    // file: req.file
-  })
-});
+// app.post("/api/upload", upload.single("bookImage"), function (req, res) {
+//   // console.log(req.file)
+//   res.json({
+//     message: "File uploaded successfully",
+//     // file: req.file
+//   })
+// });
 
 
 app.listen(3000, function () {
